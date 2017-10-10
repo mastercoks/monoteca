@@ -1,0 +1,35 @@
+{
+  "name": "monoteca",
+  "version": "1.0.0",
+  "description": "Aplicativo para busca de monografias, desenvolvido para a disciplina Teste de Software do curso de Ciências da Computação, da Universidade Estadual do Sudoeste da Bahia.",
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^5.7.0",
+    "mongoose": "^4.4.5",
+    "morgan": "^1.7.0",
+    "request": "^2.74.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mastercoks/monoteca.git"
+  },
+  "keywords": [
+    "monoteca",
+    "monografia",
+    "busca"
+  ],
+  "author": "Matheus Coqueiro Andrade, Matheus Alves de Oliveira, José Pedro Cavalvante Maioli Menezes, Yuri Rodrigues Santos Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mastercoks/monoteca/issues"
+  },
+  "homepage": "https://github.com/mastercoks/monoteca#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
