@@ -19,7 +19,7 @@ var config      = require('./config'); //retorna a configuração criada nesse a
 var Usuario     = require('./app/models/usuario');  //retorna a classe de modelo 'Usuario'
 
 /** Configuração do banco de dados */
-mongoose.connect(config.database_remoto, { useMongoClient: true, promiseLibrary: global.Promise });
+mongoose.connect(config.database, { useMongoClient: true, promiseLibrary: global.Promise });
 
 app.set('superNode-auth', config.configName); //variável que criamos no arquivo 'config'
 
