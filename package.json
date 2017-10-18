@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Aplicativo para busca de monografias, desenvolvido para a disciplina Teste de Software do curso de Ciências da Computação, da Universidade Estadual do Sudoeste da Bahia.",
   "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
