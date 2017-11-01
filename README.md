@@ -11,7 +11,7 @@
 ## Como usar
 
 Clone o repositório, abra o terminal/powershell, navegue até a pasta e digite o comando ` npm install ` para baixar as dependências utilizadas.</br>
-Utilize o comando `node .\server.js` para iniciar o servidor, ou o comando `nodemon .\server.js` caso tenha o nodemon instalado.
+Utilize o comando `node .\server.js` para iniciar o servidor, ou o comando `nodemon .\app.js` caso tenha o nodemon instalado.
 
 
 
