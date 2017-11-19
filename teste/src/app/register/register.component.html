@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <h2>Novo Cadastro</h2>
+            <form novalidate [formGroup]="registerForm" (ngSubmit)="register()">
+                <div class="row">
+                    <div class="col s6">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" class="form-control" id="name" name="name" formControlName="name">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="form-group">
+                            <label for="cpf">CPF</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" formControlName="cpf">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" class="form-control" id="email" name="email" formControlName="email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="form-group">
+                            <label for="emailConfirmation">Confirmar e-mail</label>
+                            <input type="emailConfirmation" class="form-control" id="emailConfirmation" name="emailConfirmation" formControlName="emailConfirmation">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control" id="password" name="password" formControlName="password">
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="form-group">
+                            <label for="passwordConfirmation">Confirmar senha</label>
+                            <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" formControlName="passwordConfirmation">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="course">Curso</label>
+                            <input type="text" class="form-control" id="course" name="course" formControlName="course">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="institution">Instituição</label>
+                            <input type="text" class="form-control" id="institution" name="institution" formControlName="institution">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                </div>
+
+                <span>{{errorMsg}}</span>
+                <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>

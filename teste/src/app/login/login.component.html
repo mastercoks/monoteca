@@ -1,0 +1,30 @@
+<div class="container">
+    <!-- <div class="row"> -->
+        <!-- <div class="col-sm-8 offset-sm-2"> -->
+        <div class="col-sm-6 offset-sm-3">
+            <h2>Login</h2>
+            <form novalidate [formGroup]="loginForm" (ngSubmit)="login()">
+                <!-- <div class="row"> -->
+                    <!-- <div class="col-sm-6 offset-sm-3"> -->
+                        <div class="form-group">
+                            <label for="username">Usuário</label>
+                            <input type="text" class="form-control" id="username" name="username" formControlName="username">
+                        </div>
+                    <!-- </div> -->
+                <!-- </div> -->
+                <!-- <div class="row"> -->
+                    <!-- <div class="col-6 offset-3"> -->
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control" id="password" name="password" formControlName="password">
+                        </div>
+                    <!-- </div> -->
+                <!-- </div> -->
+
+
+                <span>{{errorMsg}}</span>
+                <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Entrar</button>
+            </form>
+        </div>
+    <!-- </div> -->
+</div>
