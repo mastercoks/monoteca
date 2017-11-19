@@ -1,9 +1,10 @@
 /**
  * Arquivo: usuario.js
- * Author: Matheus Coqueiro Andrade
- * Description: Arquivo onde trataremos o modelo do projeto.
+ * Descrição: Arquivo onde trataremos o modelo do projeto.
  * Definição dos esquemas para serem utilizadas na Base de Dados (MongoDb)
- * Data: 07/10/2017
+ * Author: Matheus Coqueiro Andrade
+ * Data de Criação: 07/10/2017
+ * Ultima Modificação: 07/10/2017
  */
 
 var mongoose = require('mongoose');

@@ -8,7 +8,7 @@ module.exports = function(rota, Usuario) {
 
     usuario.nome = req.body.nome;
     usuario.cpf = req.body.cpf;
-    usuario.curso = req.body.curso
+    usuario.curso = req.body.curso;
     usuario.universidade = req.body.universidade;
     usuario.email = req.body.email;
     usuario.senha = req.body.senha;

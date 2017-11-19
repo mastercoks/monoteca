@@ -1,4 +1,13 @@
-module.exports = function(rota, Usuario) {
+/**
+ * Arquivo: usuario.js
+ * Descrição: Arquivo responsável por criar a rota 'usuario' e controla
+ * a busca de um usuario pelo ip dele, além de realizar o update e o delete.
+ * Author: Matheus Coqueiro Andrade
+ * Data de Criação: 18/10/2017
+ * Ultima Modificação: 18/10/2017
+ */
+
+ module.exports = function(rota, Usuario) {
   /** Rotas que irão terminar em '/usuarios/:usuario_id' - (servem tanto para GET by Id, PUT, &amp; DELETE) */
   rota.route('/usuarios/:usuario_id')
 

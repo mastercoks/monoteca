@@ -17,9 +17,11 @@ var mongoose    = require('mongoose');   //chamando o pacote mongoose
 var jwt         = require('jsonwebtoken'); //pacote usado para criar e verificar os tokens
 var config      = require('./config'); //retorna a configuração criada nesse arquivo relacionado ao bd
 var Usuario     = require('./app/models/usuario');  //retorna a classe de modelo 'Usuario'
+var Monografia  = require('./app/models/monografia');  //retorna a classe de modelo 'Monografia'
 
 /** Configuração do banco de dados */
-mongoose.connect(config.database, { useMongoClient: true, promiseLibrary: global.Promise });
+mongoose.connect(config.database, { useMongoClient: true});
+mongoose.Promise = global.Promise;
 
 app.set('superNode-auth', config.configName); //variável que criamos no arquivo 'config'
 
@@ -38,24 +40,25 @@ app.use(morgan('dev'));
 /*------------------------ Rotas da aplicação: ------------------------*/
 
 /** Aqui o 'router' irá pegar as instâncias das Rotas do Express */
-var rota = express.Router();
+const rota = express.Router();
 
 /** Rota de Teste para sabermos se tudo está realmente funcionando (acessar através: GET: http://localhost:8000) */
-var rotaHome = require('./app/routes/home')(rota);
+const rotaHome = require('./app/routes/home')(rota);
 
 /** Rota que irá terminar em '/autenticar' (acessar em: GET http://localhost:8000/autenticar) */
-var rotaAutenticar = require('./app/routes/autenticar')(rota, app, Usuario, jwt);
+const rotaAutenticar = require('./app/routes/autenticar')(rota, app, Usuario, jwt);
 
 /** Middleware para poder verificar e autenticar o token */
-var middlewareCheckToken = require('./app/middlewares/check_token')(rota, app, jwt);
+const middlewareCheckToken = require('./app/middlewares/check_token')(rota, app, jwt);
 
 /** Rotas utilizadas pela API */
-var rotaLogado = require('./app/routes/logado')(rota);
-var rotaUsuarios = require('./app/routes/usuarios')(rota, Usuario);
-var rotaUsuario = require('./app/routes/usuario')(rota, Usuario);
+const rotaLogado = require('./app/routes/logado')(rota);
+const rotaUsuarios = require('./app/routes/usuarios')(rota, Usuario);
+const rotaUsuario = require('./app/routes/usuario')(rota, Usuario);
+const rotaMonografias = require('./app/routes/monografias')(rota, Monografia);
 
 /** Todas as nossas rotas serão prefixadas com '/' */
-app.use('/', rota);
+app.use('/api', rota);
 
 //Iniciando o Servidor (Aplicação):
 //==============================================================

@@ -1,4 +1,13 @@
-module.exports = function(rota, app, Usuario, jwt) {
+/**
+ * Arquivo: autenticar.js
+ * Descrição: Arquivo responsável por criar a rota 'autenticar', onde será
+ * verificado o email e a senha do usuario e retornando um token.
+ * Author: Matheus Coqueiro Andrade
+ * Data de Criação: 18/10/2017
+ * Ultima Modificação: 18/10/2017
+ */
+
+ module.exports = function(rota, app, Usuario, jwt) {
   /** Rota que irão terminar em '/autenticar' (acessar em: GET http://localhost:8000/autenticar) */
   rota.post('/autenticar', function(req, res) {
 
@@ -24,7 +33,7 @@ module.exports = function(rota, app, Usuario, jwt) {
           res.json({
             success: true,
             message: 'Token criado!!!',
-            toke: token
+            token: token
           });
         }
       }
