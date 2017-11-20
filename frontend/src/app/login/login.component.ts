@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit{
     user: User;
     users: User[] = [];
     errorMsg: string;
-    
+
     constructor (private formBuilder: FormBuilder,
                  private router: Router,
                  private service: AuthenticationService){}
@@ -37,13 +37,13 @@ export class LoginComponent implements OnInit{
 
     login() {
         var user = this.loginForm.value as User;
-        // console.log(user.username);
+        console.log(user.username);
         this.service.login(user.username)
             .subscribe(authenticatedUser => {
                 this.user = authenticatedUser;
-                // console.log(this.user);
+                console.log(this.user);
                 localStorage.setItem("user", JSON.stringify(this.user));
             });
-        
+
     }
 }

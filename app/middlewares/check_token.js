@@ -1,3 +1,12 @@
+/**
+ * Arquivo: check_token.js
+ * Descrição: Arquivo responsável por criar a rota para criar  e verificar
+ * os tokens utilizados pela aplicação.
+ * Author: Matheus Coqueiro Andrade
+ * Data de Criação: 18/10/2017
+ * Ultima Modificação: 18/10/2017
+ */
+
 module.exports = function(rota, app, jwt) {
   rota.use(function(req, res, next) {
 
