@@ -1,0 +1,117 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ESPECIFICANDO NOSSO MÓDULO ANGULAR listaContatos -->
+<html ng-app="listaUsuarios">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <!-- Otimizar a exibição em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lista de Usuarios</title>
+
+    <!-- CSS -->
+    <!-- Carregando o bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        html                    { overflow-y:scroll; }
+        body                    { padding-top:50px; }
+        #lista-usuarios         { margin-bottom:30px; }
+        form button             { margin-top: 25px; }
+    </style>
+
+</head>
+<!-- DEFINE O CONTROLLER E BUSCA TODOS OS CONTATOS -->
+<body ng-controller="mainController">
+    <div class="container">
+
+        <!-- CABEÇALHO E TOTAL DE CONTATOS -->
+        <div class="jumbotron text-center">
+            <h1>Lista de Usuarios <span class="label label-info">{{ usuarios.length }}</span></h1>
+        </div>
+
+        <!-- LISTA NOSSOS CONTATOS -->
+        <div id="lista-usuarios">
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>CPF</th>
+                <th>Instituição</th>
+                <th>Curso</th>
+                <th>Senha</th>
+                <th>Data de Cadastro</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- LOOP PARA CARREGAR TODOS OS CONTATOS EM $scope.contatos -->
+              <tr ng-repeat="usuario in usuarios">
+                  <td>{{ usuario.nome }}</td>
+                  <td>{{ usuario.email }}</td>
+                  <td>{{ usuario.cpf }}</td>
+                  <td>{{ usuario.instituicao }}</td>
+                  <td>{{ usuario.curso }}</td>
+                  <td>{{ usuario.senha }}</td>
+                  <td>{{ usuario.data_cadastro }}</td>
+                  <td>
+                    <button type="button" class="btn btn-default" ng-click="editarUsuario(usuario._id)">Editar</button>
+                    <button type="button" class="btn btn-primary" ng-click="deletarUsuario(usuario._id)">Remover</button>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- FORMULÁRIO PARA CRIARMOS UM NOVO CONTATO -->
+        <div id="usuario-form">
+            <hr>
+            <form name="form-criar-usuario">
+              <div class="container">
+                <div class="row">
+                  <div class="form-group col-md-6">
+                      <label for="nomeUsuario">Nome</label>
+                      <input type="text" class="form-control" id="nomeUsuario" placeholder="Nome Sobrenome" ng-model="formUsuario.nome" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="emailUsuario">E-mail</label>
+                      <input type="text" class="form-control" id="emailUsuario" placeholder="exemplo@exemplo.com" ng-model="formUsuario.email" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                      <label for="cpfUsuario">CPF</label>
+                      <input type="text" class="form-control" id="cpfUsuario" data-mask="000.000.000-00" placeholder="000.000.000-00" ng-model="formUsuario.cpf" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                      <label for="instituicaoUsuario">Instituição</label>
+                      <input type="text" class="form-control" id="instituicaoUsuario" placeholder="Sua instituição" ng-model="formUsuario.instituicao" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                      <label for="cursoUsuario">Curso</label>
+                      <input type="text" class="form-control" id="cursoUsuario" placeholder="Seu curso" ng-model="formUsuario.curso" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                      <label for="senhaUsuario">Senha</label>
+                      <input type="password" class="form-control" id="senhaUsuario" placeholder="Sua senha" ng-model="formUsuario.senha" required>
+                  </div>
+                  <div class="form-group col-md-12">
+                      <!-- createToDo() WILL CREATE NEW TODOS -->
+                      <button type="submit" class="btn btn-primary" ng-click="criarUsuario()">Criar</button>
+                      <button type="submit" class="btn btn-info" ng-click="form-criar-usuario.$valid && atualizarUsuario()">Atualizar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+        </div>
+
+    </div>
+    <!-- JS -->
+    <!-- Carregando a biblioteca jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.min.js"></script>
+    <!-- Carregando a biblioteca AngularJS -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="usuario.angular.js"></script>
+</body>
+</html>
