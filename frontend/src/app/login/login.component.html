@@ -1,14 +1,15 @@
-<div class="container">
+<!-- <div class="container"> -->
+    <div class="jumbotron">
     <!-- <div class="row"> -->
         <!-- <div class="col-sm-8 offset-sm-2"> -->
-        <div class="col-sm-6 offset-sm-3">
+        <div class="col-sm-4 offset-sm-4">
             <h2>Login</h2>
             <form novalidate [formGroup]="loginForm" (ngSubmit)="login()">
                 <!-- <div class="row"> -->
                     <!-- <div class="col-sm-6 offset-sm-3"> -->
                         <div class="form-group">
-                            <label for="username">Usuário</label>
-                            <input type="text" class="form-control" id="username" name="username" formControlName="username">
+                            <label for="email">Usuário</label>
+                            <input type="email" class="form-control" id="email" name="email" formControlName="email">
                         </div>
                     <!-- </div> -->
                 <!-- </div> -->
@@ -22,8 +23,12 @@
                 <!-- </div> -->
 
 
-                <span>{{errorMsg}}</span>
-                <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Entrar</button>
+                <div class="">
+                    <span>{{errorMsg}}</span>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Entrar</button>
+                </div>
             </form>
         </div>
     <!-- </div> -->

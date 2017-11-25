@@ -1,19 +1,21 @@
+import { User } from './user';
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Http } from "@angular/http";
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
-export class User {
-    constructor (
-        public username: string,
-        public password: string
-    ) {}
-}
-var users = [
-    new User('admin', '123456'),
-    new User('user', '123456')
-];
+
+// export class User {
+//     constructor (
+//         public username: string,
+//         public password: string
+//     ) {}
+// }
+// var users = [
+//     new User('admin', '123456'),
+//     new User('user', '123456')
+// ];
 
 @Injectable()
 export class AuthenticationService {
@@ -39,8 +41,8 @@ export class AuthenticationService {
     //     return false;
     // }
 
-    login(username: string): Observable<User> {
-        const url = `${this.baseUrl}/users?username=${username}`;
+    login(email: string): Observable<User> {
+        const url = `${this.baseUrl}/users?email=${email}`;
         return this.http.get(url)
             .map(response => response.json() as User);
     }
@@ -50,6 +52,12 @@ export class AuthenticationService {
             this.router.navigate(['/login']);
         }
     }
+    checkCredentials2(){
+        if (localStorage.getItem("user") === null){
+            return false;
+        }
+        return true;
+    }    
 
     logout(){
         localStorage.removeItem("user");

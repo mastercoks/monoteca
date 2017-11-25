@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit{
             instrucao: [0],
             leitura: [0]
         });
-        console.log(JSON.parse(localStorage.getItem("user")));
+        // console.log(JSON.parse(localStorage.getItem("user")));
     }
 
     logout(){

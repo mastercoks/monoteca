@@ -1,13 +1,19 @@
-<div class="container">
+<div class="jumbotron">
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
             <h2>Novo Cadastro</h2>
             <form novalidate [formGroup]="registerForm" (ngSubmit)="register()">
                 <div class="row">
-                    <div class="col s6">
+                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="name">Nome Completo</label>
-                            <input type="text" class="form-control" id="name" name="name" formControlName="name">
+                            <label for="firstname">Nome</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname" formControlName="firstname">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="lastname">Sobrenome</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname" formControlName="lastname">
                         </div>
                     </div>
                 </div>
@@ -27,14 +33,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col s6">
                         <div class="form-group">
                             <label for="emailConfirmation">Confirmar e-mail</label>
                             <input type="emailConfirmation" class="form-control" id="emailConfirmation" name="emailConfirmation" formControlName="emailConfirmation">
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col s6">
                         <div class="form-group">
@@ -42,12 +48,12 @@
                             <input type="password" class="form-control" id="password" name="password" formControlName="password">
                         </div>
                     </div>
-                    <div class="col s6">
+                    <!-- <div class="col s6">
                         <div class="form-group">
                             <label for="passwordConfirmation">Confirmar senha</label>
                             <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" formControlName="passwordConfirmation">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row">
 

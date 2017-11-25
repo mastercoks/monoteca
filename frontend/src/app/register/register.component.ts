@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from "@angular/core";
+import { RegisterService } from '../register.service';
+import { User } from '../user';
 
 
 @Component({
@@ -12,25 +14,40 @@ export class RegisterComponent implements OnInit{
     title = 'register';
     registerForm: FormGroup;
     errorMsg: string;
+    reg: User;
 
     constructor (private formBuilder: FormBuilder,
-                 private router: Router){}
+                 private router: Router,
+                private service: RegisterService){}
     
     ngOnInit(){
         this.registerForm = this.formBuilder.group({
-            name: ['', Validators.required],
+            firstname: ['', Validators.required],
+            lastname: ['', Validators.required],
             email: ['', Validators.required],
-            emailConfirmation: ['', Validators.required],
-            password: ['', Validators.required],
-            passwordConfirmation: ['', Validators.required],
+            password: ['', Validators.required],            
             cpf: ['', Validators.required],
             course: ['', Validators.required],
             institution: ['', Validators.required]
         });
+        // this.registerForm = this.formBuilder.group({
+        //     firstname: ['', Validators.required],
+        //     lastname: ['', Validators.required],
+        //     email: ['', Validators.required],
+        //     // emailConfirmation: ['', Validators.required],
+        //     password: ['', Validators.required],
+        //     // passwordConfirmation: ['', Validators.required],
+        //     cpf: ['', Validators.required],
+        //     course: ['', Validators.required],
+        //     institution: ['', Validators.required]
+        // });
     }
 
     register(){
-        var register = this.registerForm.value;
-        console.log(register);
-    }
+        this.reg = this.registerForm.value;
+        console.log(this.reg);
+        this.service.create(this.reg).subscribe(res =>{
+            console.log;
+        });
+    }    
 }

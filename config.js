@@ -7,6 +7,6 @@
 
 module.exports = {
   'configName': 'monoteca',
-  //'database' : 'mongodb://mastercoks:=e2E&raspA7e@ds113835.mlab.com:13835/monoteca' // via mLab
-  'database': 'mongodb://localhost/monoteca' // localmente
+  'database' : 'mongodb://mastercoks:=e2E&raspA7e@ds113835.mlab.com:13835/monoteca' // via mLab
+  // 'database': 'mongodb://localhost/monoteca' // localmente
 }

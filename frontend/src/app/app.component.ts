@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './authentication.service';
+import { User } from './user';
+
 
 @Component({
   selector: 'app-root',
@@ -7,8 +10,17 @@ import { Component } from '@angular/core';
   // <div class="col-md-8 offset-md-2">
   //   <router-outlet></router-outlet>
   // </div>`,
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [AuthenticationService]
 })
 export class AppComponent {
   title = 'app';
+  constructor (
+    private service: AuthenticationService){}  
+  verify() {
+    if (this.service.checkCredentials2())
+      return true;
+    return false;
+
+  }
 }
