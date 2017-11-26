@@ -30,36 +30,38 @@ module.exports = function(router) {
     // ROTA CRIAR =============================================
     .post(function(req, res) {
       // Cria um usuario, as informações são enviadas por uma requisição AJAX pelo Angular
-      Usuario.find({cpf: req.body.cpf}, function(error, usuario) {
+      Usuario.find({ $or: [ { cpf: req.body.cpf },{ email: req.body.email } ] }, function(error, usuario) {
         if (error) {
           res.send(error);
-        }
-        if (!isEmpty(usuario)) {
-          res.json({message: 'CPF já existente'});
         } else {
-          const myPassword = req.body.senha;
-          bcrypt.hash('myPassword', 10, function(err, hash) {
-            Usuario.create({
-              nome: req.body.nome,
-              cpf: req.body.cpf,
-              curso: req.body.curso,
-              instituicao: req.body.instituicao,
-              email: req.body.email,
-              senha: hash
+          if (!isEmpty(usuario)) {
+            res.json({message: 'CPF ou Email já existente!'});
+          } else {
+            const myPassword = req.body.senha;
+            bcrypt.hash('myPassword', 10, function(err, hash) {
+              Usuario.create({
+                nome: req.body.nome,
+                cpf: req.body.cpf,
+                curso: req.body.curso,
+                instituicao: req.body.instituicao,
+                email: req.body.email,
+                senha: hash
 
-            }, function(error, usuario) {
-              // Em caso de erros, envia o erro na resposta
-              if (error) {
-                res.send(error);
-              }
-              Usuario.find(function(error, usuarios) {
+              }, function(error, usuario) {
+                // Em caso de erros, envia o erro na resposta
                 if (error) {
                   res.send(error);
+                } else {
+                  Usuario.find(function(error, usuarios) {
+                    if (error) {
+                      res.send(error);
+                    }
+                    res.json(usuarios);
+                  });
                 }
-                res.json(usuarios);
-              })
+              });
             });
-          });
+          }
         }
       })
     });
