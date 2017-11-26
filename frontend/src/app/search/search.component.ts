@@ -26,6 +26,7 @@ export class SearchComponent implements OnInit {
     // errorMsg: string;
     // mono: Monograph;
     monosList: Monograph[];
+    filteredMonos: Monograph[];
     monographs: Array<string> = [];
     searchInputTerm: string = '';
 
@@ -41,15 +42,21 @@ export class SearchComponent implements OnInit {
             .debounceTime(400)
             .distinctUntilChanged()
             .map((event: KeyboardEvent) => (<HTMLInputElement>event.target).value)
-            .switchMap(title => this.getBookTitles(title))
-            .subscribe(bookTitles => this.monographs = bookTitles);
+            .switchMap(title => this.getMonoTitles(title))
+            .subscribe(monoTitles => this.monographs = monoTitles);
 
         Observable.fromEvent(this.suggestions.nativeElement, 'click')
-            .map((event: KeyboardEvent) => (<HTMLInputElement>event.srcElement).innerText)
+            .map((event: KeyboardEvent) => (<HTMLInputElement>event.target).innerText)
             .subscribe(res => {
+                console.log("Clicado");
+                console.log(res);
                 this.searchInputTerm = res;
                 this.monographs = [];
             });
+    }
+
+    click(){
+        
     }
 
     getMonos() {
@@ -57,17 +64,20 @@ export class SearchComponent implements OnInit {
             subscribe(monos => this.monosList = monos);
     }
 
-    getBookTitles(title: string): Observable<string[]> {
-        return Observable.of(this.filterBooks(title).map(book => book.title));
+    getMonoTitles(title: string): Observable<string[]> {
+        return Observable.of(this.filterMonos(title).map(mono => mono.title));
     }
-    filterBooks(title: string): Monograph[] {
+
+    filterMonos(title: string): Monograph[] {
         return title ?
-            this.monosList.filter((book) => new RegExp(title, 'gi').test(book.title)) :
+            this.monosList.filter((mono) => new RegExp(title, 'gi').test(mono.title)) :
             [];
     }
 
     searchMonos() {
         this.monographs = [];
-        this.search.emit(this.searchInputTerm);
+        this.filteredMonos = this.filterMonos(this.searchInputTerm.valueOf());
+
     }
+
 }

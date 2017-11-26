@@ -21,7 +21,7 @@ export class MonographComponent implements OnInit{
     ngOnInit(){
         this.monographForm = this.formBuilder.group({
             title: ['', Validators.required],
-            resume: ['', Validators.required],
+            abstract: ['', Validators.required],
             author: ['', Validators.required]
         });
     }

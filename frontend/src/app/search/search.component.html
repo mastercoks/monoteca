@@ -16,11 +16,22 @@
     </form> -->
     <div class="books-search-form">
         <input type="text" #searchInput class="search-input" placeholder="Titulo da Monografia" [(ngModel)]="searchInputTerm">
-        <button class="btn btn-primary" (click)="searchMonos()">Search</button>
+        <button class="btn btn-primary" (click)="searchMonos()">Buscar</button>
     </div>
     <div class="title-suggestion-list--wrapper">
         <ul class="title-suggestion-list" #suggestions [style.display]="monographs.length > 0 ? 'block' : 'none'">
             <li *ngFor="let bookTitle of monographs">{{bookTitle}}</li>
         </ul>
     </div>
+    <div class="row">
+        <div *ngFor="let mono of filteredMonos" class="card col-sm-4">
+            <div class="card-body">
+                <h4>{{ mono.title }}</h4>
+                <p>{{ mono.abstract }}</p>
+                <p>{{ mono.author }}</p>
+                <a class="btn btn-primary">Veja Mais</a>
+            </div>
+        </div>
+    </div>
+
 </div>

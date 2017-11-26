@@ -10,7 +10,7 @@ import { ActivatedRoute } from "@angular/router";
   
     constructor(route: ActivatedRoute) {
   
-        route.params.subscribe(params => console.log("side menu id parameter",params['id']));
+        // route.params.subscribe(params => console.log("side menu id parameter",params['id']));
   
     }
   }
