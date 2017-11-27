@@ -1,8 +1,10 @@
+import { ModalComponent } from './../modal/modal.component';
+import { DialogService } from 'ng2-bootstrap-modal';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from "@angular/core";
-import { RegisterService } from '../register.service';
-import { User } from '../user';
+import { RegisterService } from '../services/register.service';
+import { User } from './../models/user';
 
 
 @Component({
@@ -18,7 +20,8 @@ export class RegisterComponent implements OnInit{
 
     constructor (private formBuilder: FormBuilder,
                  private router: Router,
-                private service: RegisterService){}
+                private service: RegisterService,
+                private dialog: DialogService){}
     
     ngOnInit(){
         this.registerForm = this.formBuilder.group({
@@ -47,7 +50,16 @@ export class RegisterComponent implements OnInit{
         this.reg = this.registerForm.value;
         console.log(this.reg);
         this.service.create(this.reg).subscribe(res =>{
-            console.log;
+            this.dialog.addDialog(ModalComponent, {
+                title: "Confirmação",
+                message: "Usuário criado com sucesso"
+            }).subscribe(
+                (isClosed)=>{
+                    if(isClosed){
+                        this.router.navigate(['/login']);
+                    }
+                }
+            )
         });
     }    
 }

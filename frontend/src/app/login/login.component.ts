@@ -1,8 +1,8 @@
-import { AuthenticationService } from './../authentication.service';
+import { AuthenticationService } from './../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../user';
+import { User } from './../models/user';
 
 
 @Component({
@@ -28,15 +28,6 @@ export class LoginComponent implements OnInit{
             password: ['', Validators.required]
         });
     }
-
-    // login_old(){
-    //     var user = this.loginForm.value as User;
-    //     console.log(user);
-    //     if(!this.service.login(user)){
-    //         this.errorMsg = 'Failed to login';
-    //     }
-    //     console.log(this.service.login(user.username));
-    // }
 
     login() {
         var user = this.loginForm.value as User;

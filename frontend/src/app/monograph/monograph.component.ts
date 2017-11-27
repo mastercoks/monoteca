@@ -1,3 +1,6 @@
+import { ActivatedRoute } from '@angular/router';
+import { DialogService } from 'ng2-bootstrap-modal';
+import { ModalComponent } from './../modal/modal.component';
 import { MonographService } from './../services/monograph.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -17,7 +20,9 @@ export class MonographComponent implements OnInit{
     
     constructor (private formBuilder: FormBuilder,
                  private router: Router,
-                 private service: MonographService){}
+                 private route: ActivatedRoute,
+                 private service: MonographService,
+                 private dialog: DialogService){}
     ngOnInit(){
         this.monographForm = this.formBuilder.group({
             title: ['', Validators.required],
@@ -33,7 +38,18 @@ export class MonographComponent implements OnInit{
         this.mono.date = new Date();
         // console.log(this.mono);
         this.service.create(this.mono).subscribe(res =>{
-            console.log;
+            this.dialog.addDialog(ModalComponent, {
+                title: "Confirmação",
+                message: "Monografia cadastrada com sucesso"
+            }).subscribe(
+                (isClosed)=>{
+                    if(isClosed){
+                        this.router.navigate(['user']);
+                        // this.router.navigate(['../monograph'], { relativeTo: this.route })
+                        // this.router.navigateByUrl('user/monograph');
+                    }
+                }
+            )
         });
     }      
 }

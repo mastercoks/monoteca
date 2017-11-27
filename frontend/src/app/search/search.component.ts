@@ -1,3 +1,4 @@
+import { ModalComponent } from './../modal/modal.component';
 import { Observable } from 'rxjs/Observable';
 import { MonographService } from './../services/monograph.service';
 import { Router } from '@angular/router';
@@ -11,6 +12,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { DialogService } from 'ng2-bootstrap-modal/dist/dialog.service';
 
 @Component({
     selector: 'search-app',
@@ -34,7 +36,8 @@ export class SearchComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder,
         private router: Router,
-        private service: MonographService) { }
+        private service: MonographService,
+        private dialogService: DialogService) { }
 
     ngOnInit() {
         this.getMonos();
@@ -53,10 +56,6 @@ export class SearchComponent implements OnInit {
                 this.searchInputTerm = res;
                 this.monographs = [];
             });
-    }
-
-    click(){
-        
     }
 
     getMonos() {
@@ -78,6 +77,6 @@ export class SearchComponent implements OnInit {
         this.monographs = [];
         this.filteredMonos = this.filterMonos(this.searchInputTerm.valueOf());
 
-    }
+    }    
 
 }
