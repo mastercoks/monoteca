@@ -19,23 +19,7 @@ export class AuthenticationService {
     }
 
     checkCredentials(){
-        // try {
-        //     if("user" in localStorage){
-        //         alert('yes');
-        //     } else {
-        //         this.router.navigate(['/login']);
-        //     }   
-        // } catch (exception){
-
-        // } finally {
-        //     this.router.navigate(['/login']);
-        // }
-        var teste =sessionStorage.getItem("user");
-        if (teste == null || teste == "null" || teste === null || teste === "null"){
-            this.router.navigate(['/login']);
-        }
-     
-
+        this.router.navigate(['/login']);
     }
     checkCredentials2(){
         if (localStorage.getItem("user") === null){

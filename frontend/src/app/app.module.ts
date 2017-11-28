@@ -49,6 +49,7 @@ const routes: Routes = [
       component: SideMenuComponent
     }
   ]},
+  {path: '**', redirectTo: 'home'},
 ]
 @NgModule({
   declarations: [

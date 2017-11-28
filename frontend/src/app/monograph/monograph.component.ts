@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Monograph } from '../models/monograph';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
     selector: 'monograph-app',
@@ -22,8 +23,12 @@ export class MonographComponent implements OnInit{
                  private router: Router,
                  private route: ActivatedRoute,
                  private service: MonographService,
+                 private authService: AuthenticationService,
                  private dialog: DialogService){}
     ngOnInit(){
+        if(this.authService.checkCredentials2() == false){
+            this.router.navigate(['/login']);
+        }        
         this.monographForm = this.formBuilder.group({
             title: ['', Validators.required],
             abstract: ['', Validators.required],

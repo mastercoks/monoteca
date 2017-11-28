@@ -1,3 +1,4 @@
+
 import { ModalMonoComponent } from './../modalMono/modalMono.component';
 import { ModalComponent } from './../modal/modal.component';
 import { Observable } from 'rxjs/Observable';
@@ -14,6 +15,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { DialogService } from 'ng2-bootstrap-modal/dist/dialog.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
     selector: 'search-app',
@@ -39,9 +41,13 @@ export class SearchComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
         private router: Router,
         private service: MonographService,
+        private authService: AuthenticationService,
         private dialogService: DialogService) { }
 
     ngOnInit() {
+        if(this.authService.checkCredentials2() == false){
+            this.router.navigate(['/login']);
+        }
         this.getMonos();
         Observable.fromEvent(this.searchInput.nativeElement, 'keyup')
             .debounceTime(400)
