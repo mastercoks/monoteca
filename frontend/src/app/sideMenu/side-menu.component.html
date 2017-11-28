@@ -1,0 +1,23 @@
+<div class="d-flex align-items-center navbar-menu">
+  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#sidebar-menu" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+  </button>
+</div>
+<nav id="sidebar-menu"class="sidebar-menu bd-links collapse">
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" routerLink="monograph"><i class="material-icons">send</i>Enviar Monografia
+        <span class="sr-only">(current)</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" routerLink="search"><i class="material-icons">search</i>Buscar Monografias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" href="#"><i class="material-icons">description</i>Minhas Monografias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" href="#"><i class="material-icons">person</i>Editar Perfil</a>
+    </li>
+  </ul>
+</nav>

@@ -1,35 +1,15 @@
-<!-- <div class="container"> -->
-    <div class="jumbotron">
-    <!-- <div class="row"> -->
-        <!-- <div class="col-sm-8 offset-sm-2"> -->
-        <div class="col-sm-4 offset-sm-4">
-            <h2>Login</h2>
-            <form novalidate [formGroup]="loginForm" (ngSubmit)="login()">
-                <!-- <div class="row"> -->
-                    <!-- <div class="col-sm-6 offset-sm-3"> -->
-                        <div class="form-group">
-                            <label for="email">Usuário</label>
-                            <input type="email" class="form-control" id="email" name="email" formControlName="email">
-                        </div>
-                    <!-- </div> -->
-                <!-- </div> -->
-                <!-- <div class="row"> -->
-                    <!-- <div class="col-6 offset-3"> -->
-                        <div class="form-group">
-                            <label for="password">Senha</label>
-                            <input type="password" class="form-control" id="password" name="password" formControlName="password">
-                        </div>
-                    <!-- </div> -->
-                <!-- </div> -->
 
+<div class="jumbotron">
+  <div class="container">
+    <form class="form-signin" novalidate [formGroup]="loginForm" (ngSubmit)="login()">
+      <h2 class="form-signin-heading">Entrar na Monoteca</h2>
+      <label for="email" class="sr-only">Email</label>
+      <input type="email" id="email" class="form-control" placeholder="Email" required autofocus="" formControlName="email">
+      <label for="password" class="sr-only">Senha</label>
+      <input type="password" id="password" class="form-control" placeholder="Senha" required formControlName="password">
 
-                <div class="">
-                    <span>{{errorMsg}}</span>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Entrar</button>
-                </div>
-            </form>
-        </div>
-    <!-- </div> -->
+      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="loginForm.invalid">Entrar</button>
+      <p class="registrar">Novo na Monoteca? <a href="/register">Crie uma conta.</a></p>
+    </form>
+  </div>
 </div>

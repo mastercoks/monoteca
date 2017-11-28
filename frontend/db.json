@@ -29,6 +29,16 @@
       "course": "Computação",
       "institution": "UESB",
       "id": 4
+    },
+    {
+      "firstname": "Matheus",
+      "lastname": "Coqueiro Andrade",
+      "email": "matheus@gmail.com",
+      "password": "senha",
+      "cpf": "131.231.231-23",
+      "course": "Ciência da Computação",
+      "institution": "Universidade Estadual do Sudoeste da Bahia",
+      "id": 5
     }
   ],
   "monographs": [

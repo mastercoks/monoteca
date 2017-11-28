@@ -1,84 +1,53 @@
 <div class="jumbotron">
-    <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-            <h2>Novo Cadastro</h2>
-            <form novalidate [formGroup]="registerForm" (ngSubmit)="register()">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="firstname">Nome</label>
-                            <input type="text" class="form-control" id="firstname" name="firstname" formControlName="firstname">
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <label for="lastname">Sobrenome</label>
-                            <input type="text" class="form-control" id="lastname" name="lastname" formControlName="lastname">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s6">
-                        <div class="form-group">
-                            <label for="cpf">CPF</label>
-                            <input type="text" class="form-control" id="cpf" name="cpf" formControlName="cpf">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s6">
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" class="form-control" id="email" name="email" formControlName="email">
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="row">
-                    <div class="col s6">
-                        <div class="form-group">
-                            <label for="emailConfirmation">Confirmar e-mail</label>
-                            <input type="emailConfirmation" class="form-control" id="emailConfirmation" name="emailConfirmation" formControlName="emailConfirmation">
-                        </div>
-                    </div>
-                </div> -->
-                <div class="row">
-                    <div class="col s6">
-                        <div class="form-group">
-                            <label for="password">Senha</label>
-                            <input type="password" class="form-control" id="password" name="password" formControlName="password">
-                        </div>
-                    </div>
-                    <!-- <div class="col s6">
-                        <div class="form-group">
-                            <label for="passwordConfirmation">Confirmar senha</label>
-                            <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" formControlName="passwordConfirmation">
-                        </div>
-                    </div> -->
-                </div>
-                <div class="row">
-
-                </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <label for="course">Curso</label>
-                            <input type="text" class="form-control" id="course" name="course" formControlName="course">
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <label for="institution">Instituição</label>
-                            <input type="text" class="form-control" id="institution" name="institution" formControlName="institution">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-
-                </div>
-
-                <span>{{errorMsg}}</span>
-                <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Cadastrar</button>
-            </form>
+  <div class="container">
+    <form class="form-signin" novalidate [formGroup]="registerForm" (ngSubmit)="register()">
+      <h2 class="form-signin-heading">Novo Cadastro</h2>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="firstname">Nome</label>
+              <input type="text" id="firstname" class="form-control" placeholder="Nome" required autofocus="" formControlName="firstname">
+            </div>
+          </div>
+          <div class="col-sm-5">
+            <div class="form-group">
+              <label for="lastname">Sobrenome</label>
+              <input type="text" id="lastname" class="form-control" placeholder="Sobrenome" required formControlName="lastname">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="cpf">CPF</label>
+              <input type="cpf" id="cpf" class="cpf form-control" placeholder="000.000.000-00" required formControlName="cpf">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" placeholder="exemplo@exemplo.com" required formControlName="email">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="password">Senha</label>
+              <input type="password" id="password" class="form-control" placeholder="Sua Senha" required formControlName="password">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="course">Curso</label>
+              <input type="text" id="course" class="form-control" placeholder="Seu Curso" required formControlName="course">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="institution">Instituição</label>
+              <input type="text" id="institution" class="form-control" placeholder="Sua Instituição" required formControlName="institution">
+            </div>
+          </div>
         </div>
-    </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="registerForm.invalid">Cadastrar</button>
+      <p class="registrar">Já possui uma conta? <a href="/register">Entre na Monoteca.</a></p>
+    </form>
+  </div>
 </div>
