@@ -11,17 +11,17 @@ import { User } from './../models/user';
     styleUrls: ['./login.component.scss'],
     providers: [AuthenticationService]
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
     title = 'login';
     loginForm: FormGroup;
     user: User;
     users: User[] = [];
     errorMsg: string;
-    
-    constructor (private formBuilder: FormBuilder,
-                 private router: Router,
-                 private service: AuthenticationService){}
-    ngOnInit(){
+
+    constructor(private formBuilder: FormBuilder,
+        private router: Router,
+        private service: AuthenticationService) { }
+    ngOnInit() {
         this.service.logout();
         this.loginForm = this.formBuilder.group({
             email: ['', Validators.required],
@@ -35,19 +35,27 @@ export class LoginComponent implements OnInit{
         this.service.login(user.email)
             .subscribe(authenticatedUser => {
                 this.user = authenticatedUser;
-                if (user.password === this.user[0].password){
-                    // console.log(this.user);
-                    localStorage.setItem("user", JSON.stringify(this.user));
-                    this.router.navigate(['/user']);
-                } else{
-                    console.log(user.password);
-                    console.log(this.user[0].password);
-                    console.log("E-mail ou senha incorreto");
+                if (this.user.toString() !== "undefined") {
+                    console.log(this.user);
+                    
+                    if (user.password === this.user[0].password) {
+                        // console.log(this.user);
+                        localStorage.setItem("user", JSON.stringify(this.user));
+                        this.router.navigate(['/user']);
+                    } else {
+                        console.log(user.password);
+                        console.log(this.user[0].password);
+                        console.log("E-mail ou senha incorreto");
+                        this.errorMsg = 'E-mail ou senha incorreto';
+                    }
+                } else {
                     this.errorMsg = 'E-mail ou senha incorreto';
                 }
 
+
+
             });
-        
-        
+
+
     }
 }

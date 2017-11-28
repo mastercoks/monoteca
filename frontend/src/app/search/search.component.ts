@@ -1,3 +1,4 @@
+import { ModalMonoComponent } from './../modalMono/modalMono.component';
 import { ModalComponent } from './../modal/modal.component';
 import { Observable } from 'rxjs/Observable';
 import { MonographService } from './../services/monograph.service';
@@ -31,6 +32,7 @@ export class SearchComponent implements OnInit {
     filteredMonos: Monograph[];
     monographs: Array<string> = [];
     searchInputTerm: string = '';
+    mono: Monograph;
 
     @Output() search = new EventEmitter<string>();
 
@@ -51,8 +53,6 @@ export class SearchComponent implements OnInit {
         Observable.fromEvent(this.suggestions.nativeElement, 'click')
             .map((event: KeyboardEvent) => (<HTMLInputElement>event.target).innerText)
             .subscribe(res => {
-                console.log("Clicado");
-                console.log(res);
                 this.searchInputTerm = res;
                 this.monographs = [];
             });
@@ -77,6 +77,22 @@ export class SearchComponent implements OnInit {
         this.monographs = [];
         this.filteredMonos = this.filterMonos(this.searchInputTerm.valueOf());
 
-    }    
+    }
+
+    showMono(id: number) {
+        this.service.getMono(id).
+            subscribe(response => {
+                this.mono = response;
+                this.dialogService.addDialog(ModalMonoComponent, {
+                    title: this.mono.title,
+                    abstract: this.mono.abstract,
+                    author: this.mono.author,
+                    sender: this.mono.sender,
+                    date: this.mono.date
+                });
+
+            });
+
+    }
 
 }
