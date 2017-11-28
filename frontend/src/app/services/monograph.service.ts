@@ -38,4 +38,10 @@ export class MonographService {
         return this.http.get(url)
             .map(response => response.json() as Monograph[]);
     }
+
+    getMono(id: number) {
+        const url = `${this.baseUrl}/monographs/${id}`;
+        return this.http.get(url)
+            .map(response => response.json() as Monograph);
+    }
 }

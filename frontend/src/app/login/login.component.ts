@@ -13,7 +13,7 @@ import { User } from './../models/user';
     styleUrls: ['./login.component.scss'],
     providers: [AuthenticationService]
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
     title = 'login';
     loginForm: FormGroup;
     user: User;

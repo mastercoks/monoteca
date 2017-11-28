@@ -1,3 +1,4 @@
+import { ModalMonoComponent } from './modalMono/modalMono.component';
 import { UserHomeComponent } from './userHome/userHome.component';
 import { MonographService } from './services/monograph.service';
 import { SideMenuComponent } from './sideMenu/side-menu.component';
@@ -51,14 +52,14 @@ const routes: Routes = [
 ]
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, HomeComponent, RegisterComponent, MonographComponent, UserComponent, SideMenuComponent, SearchComponent, UserHomeComponent, ModalComponent
+    AppComponent, LoginComponent, HomeComponent, RegisterComponent, MonographComponent, UserComponent, SideMenuComponent, SearchComponent, UserHomeComponent, ModalComponent, ModalMonoComponent
   ],
   imports: [
     BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, BrowserAnimationsModule, HttpModule, BootstrapModalModule
   ],
   providers: [AuthenticationService, RegisterService, MonographService],
   entryComponents: [
-    ModalComponent
+    ModalComponent, ModalMonoComponent
   ],
   bootstrap: [AppComponent],
   exports: [ RouterModule ]

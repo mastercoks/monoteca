@@ -12,12 +12,6 @@ export class AuthenticationService {
     constructor (private router: Router,
                  private http: Http){}
 
-    getBook(id: number): Observable<User> {
-    const url = `${this.baseUrl}/books/${id}`;
-    return this.http.get(url)
-    .map(response => response.json() as User);
-    }
-
     login(email: string): Observable<User> {
         const url = `${this.baseUrl}/users?email=${email}`;
         return this.http.get(url)
